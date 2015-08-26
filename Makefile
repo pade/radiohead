@@ -12,7 +12,7 @@ VERSION_MINOR = 46
 
 DISTFILE = $(PROJNAME)-$(VERSION_MAJOR).$(VERSION_MINOR).zip
 
-all:	versioning doxygen dist upload
+all:	versioning doxygen dist
 
 # Update version numbers in RadioHead.h
 versioning:
@@ -28,6 +28,3 @@ ci:
 
 dist:	
 	(cd ..; zip $(PROJNAME)/$(DISTFILE) `cat $(PROJNAME)/MANIFEST`)
-
-upload:
-	rsync -avz $(DISTFILE) doc/ www.airspayce.com:public_html/mikem/arduino/$(PROJNAME)
